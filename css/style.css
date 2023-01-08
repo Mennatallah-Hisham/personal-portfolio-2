@@ -155,6 +155,7 @@ section{
     transition: all 0.4s;
 
 }
+
 .nav-list-link::after{
     content:" ";
    display: block;
@@ -164,17 +165,22 @@ section{
     transform: scaleX(0);
     transition: all 0.4s;
 }
+
 .nav-list-link:active,
 .nav-list-link:hover{
 
 background-color: #764ef93d;
 
 }
+
 .nav-list-link:active::after,
 .nav-list-link:hover::after{
     transform: scaleX(1);
 }
 
+.active-link{
+    background-color: #764ef93d;
+}
 /***************** HERO ***********/
 .sec-hero{
     background-color:var(--clr-primary);

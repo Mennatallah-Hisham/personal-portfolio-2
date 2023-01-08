@@ -27,6 +27,9 @@
 }
 
 @media (min-width:900px){
+    .txt{
+        font-size: 1.8rem;
+    }
 .header .container{
     display: flex;
     justify-content: space-between;
@@ -51,6 +54,7 @@ font-size: 1.8rem;
         font-size: 9rem;
     }
     .grid-2-col{
+        padding-top: 3rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
