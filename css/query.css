@@ -30,10 +30,12 @@
     .txt{
         font-size: 1.8rem;
     }
-.header .container{
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
+
+.main-nav{
+    display: block;
+}
+.mobile-nav-btn{
+    display: none;
 }
     .main-nav-list{
         display:flex;

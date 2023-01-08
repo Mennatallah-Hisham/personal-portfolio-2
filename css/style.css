@@ -45,7 +45,9 @@ ul{
 
 
 /******************re-usable*******************/
-
+.overflow-Y{
+    overflow-y: hidden;
+}
 .container {
     width:95%;
     max-width: 140rem;
@@ -132,12 +134,21 @@ section{
 
 /***************** header ***********/
 .header{
-    background-color: #fff;
+   
     padding:1.2rem 0;
     position: sticky;
     top:0;
     left:0;
     z-index: 3;
+    background-color: #fff;
+}
+.header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+
+ 
+
 }
 .logo{
     font-size: 3rem;
@@ -147,6 +158,38 @@ section{
     text-transform: capitalize;
 
 }
+.mobile-nav-btn{
+    background-color: transparent;
+    border:none;
+}
+.hide{
+    display: none;
+}
+
+.main-nav{
+    display: none;
+}
+
+.open-nav .main-nav{
+    display: block;
+    position: absolute;
+    top:5rem;
+    left:0;
+    width:100%;
+    height:calc(100vh - 3rem);
+    background-color: #fff;
+display: flex;
+justify-content: center;
+    
+}
+.open-nav .main-nav-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
+}
+
 .nav-list-link:visited,
 .nav-list-link:link{
     color:var(--clr-primary);
@@ -170,6 +213,7 @@ section{
 .nav-list-link:hover{
 
 background-color: #764ef93d;
+
 
 }
 

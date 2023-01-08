@@ -5,7 +5,79 @@ const counterContainer =document.querySelector(".info");
 const counters = document.querySelectorAll(".num");
 
 const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-list-link");
+const navBtn =document.querySelector(".mobile-nav-btn");
+const closeIcon = document.querySelector(".close-icon");
+const openIcon = document.querySelector(".open-icon");
+const headerEle = document.querySelector(".header");
+const html = document.querySelector("html")
+const allLinks =document.querySelectorAll('a:link');
+
+function toggleNabar(){
+    closeIcon.classList.toggle("hide");
+    openIcon.classList.toggle("hide");
+    headerEle.classList.toggle("open-nav");
+    html.classList.toggle("overflow-Y");
+}
+navBtn.addEventListener("click",toggleNabar)
+
+/******** smooth scroll******* */
+
+
+
+allLinks.forEach( function(link){
+    link.addEventListener('click',(e)=>{
+
+        e.preventDefault();
+        const href=link.getAttribute("href");
+
+        //scroll back to top
+        if(href==="#"){
+            window.scrollTo({
+                top:0,
+                behavior:"smooth",
+
+            })
+        }
+
+        //scroll to other links
+        if(href !=="#" && href.startsWith("#")){
+          const sectionEl=  document.querySelector(href);
+          sectionEl.scrollIntoView(
+            {
+                behavior:"smooth",
+            }
+          )
+        }
+
+        //close mobile nav
+        if(link.classList.contains('nav-list-link')){
+           toggleNabar();
+        }
+
+    });
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function progressUp(){
@@ -78,22 +150,6 @@ const startProgressBar = function (entery){
        progressBarObs.unobserve(progressBarContainer);
     }
 }
-const obsOptions ={
-    root:null,
-    threshold:0,
-}
-
-const progressBarObs = new IntersectionObserver(startProgressBar,obsOptions);
-progressBarObs.observe(progressBarContainer);
-
-
-const counterObs = new IntersectionObserver(startCouterUp,obsOptions);
-
-counterObs.observe(counterContainer);
-
-
-
-
 const sectionLinkActivation=function (entery){
     const section =entery[0];
 
@@ -101,14 +157,8 @@ const sectionId =section.target.getAttribute("id");
 if(!sectionId) return;
     if(section.isIntersecting){
      
-     
-        
-        
 
      document.querySelector(`[href="#${sectionId}"]`)?.classList.add('active-link');
-    
-
-     
 
     }
     if(section.isIntersecting ===false){
@@ -122,14 +172,26 @@ if(!sectionId) return;
 
 }
 
+
+const obsOptions ={
+    root:null,
+    threshold:0,
+}
+
+const progressBarObs = new IntersectionObserver(startProgressBar,obsOptions);
+progressBarObs.observe(progressBarContainer);
+
+const counterObs = new IntersectionObserver(startCouterUp,obsOptions);
+
+counterObs.observe(counterContainer);
+
+
 const sectionObs = new IntersectionObserver(sectionLinkActivation,{
    
         root:null,
         threshold:0.1,
     
 })
-
-
 
 sections.forEach((section)=>{
     sectionObs.observe(section);
