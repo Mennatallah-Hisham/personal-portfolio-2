@@ -5,6 +5,7 @@
         max-width:60rem;
     }
     .sec-hero {
+        height: 100vh;
         display: flex;
     }
     .flex-col{
